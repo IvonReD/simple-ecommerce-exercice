@@ -102,28 +102,31 @@ drawProducts(data);
 // }
 
 let addcartProduct = [];
+
 function addToCart(eventBtn, productId) {
+
   if (eventBtn.classList.contains('clicked') == false) {
     increaseCounter();
     changeButtonStatus(eventBtn, false);
+
     let newArray = data.products.filter(function (element) {
       if (productId == element.id) {
         addcartProduct.push(element);
-        localStorage.setItem("addcartProduct", JSON.stringify(addcartProduct)); 
-        console.log(localStorage);
-        
       }
     })
     console.log(addcartProduct);
+
   } else if (eventBtn.classList.contains('clicked') == true) {
     decreaseCounter()
     changeButtonStatus(eventBtn, true);
     removeFromCart(productId)
     console.log(addcartProduct);
   }
+
 }
+
 function removeFromCart(productId) {
-  addcartProducts = addcartProducts.filter(function (element) {
+  addcartProduct = addcartProduct.filter(function (element) {
     return element.id !== productId
     console.log(newArray);
   });
@@ -138,6 +141,7 @@ function increaseCounter() {
   counter += 1
   counterIncrease.innerHTML = counter;
 }
+
 function decreaseCounter() {
   /* como accedemos al HTML del contador
   y como lo incrementamos*/
@@ -146,13 +150,13 @@ function decreaseCounter() {
   counter -= 1
   counterIncrease.innerHTML = counter;
 }
+
 function changeButtonStatus(btnChange, boolean) {
 if(boolean == false){
   btnChange.innerText = ("Qutar del carrito");
   btnChange.classList.toggle('clicked');
 }else if (boolean == true) {
   btnChange.innerText = ("Agregar al carrito");
-  btnChange.toggle('clicked');
+ 
  }
 }
- 
